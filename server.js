@@ -13,6 +13,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log("Connecté à MongoDB"))
   .catch(err => console.error("Erreur de connexion MongoDB :", err));
 
+  console.log("Mongo URI:", process.env.MONGO_URI);
+
+
 // Schéma et modèle Mongoose pour les cryptomonnaies
 const cryptoSchema = new mongoose.Schema({
   symbol: { type: String, required: true, unique: true },
