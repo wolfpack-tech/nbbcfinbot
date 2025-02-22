@@ -1,0 +1,9 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+    },
+    "name": "Crypto Chatbot",
+    "runArgs": ["--cap-add=SYS_ADMIN"],
+    "postCreateCommand": "pm2 resurrect"
+  }
+  
