@@ -9,11 +9,10 @@ const path = require('path');
 require('dotenv').config();
 
 // --- CONNEXION À MONGODB ---
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+MONGO_URI="mongodb+srv://koringawolfgang:9XH4kKjL6pIomgyU@clusterbot.ntgho.mongodb.net/?retryWrites=true&w=majority&appName=Clusterbot";
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connecté à MongoDB"))
   .catch(err => console.error("Erreur de connexion MongoDB :", err));
-
-  console.log("Mongo URI:", process.env.MONGO_URI);
 
 
 // Schéma et modèle Mongoose pour les cryptomonnaies
