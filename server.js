@@ -1,5 +1,6 @@
 // Importations
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const puppeteer = require('puppeteer');
 const qrcode = require('qrcode');
 const express = require('express');
 const session = require('express-session');
