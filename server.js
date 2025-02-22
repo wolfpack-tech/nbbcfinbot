@@ -28,6 +28,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: 'monSecret', resave: false, saveUninitialized: false }));
 
+// --- CONFIGURATION DE PUPPETEER ---
+(async () => {
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+  console.log("Navigateur Puppeteer lancé avec succès.");
+})();
+
 // --- PARTIE WEB ---
 
 // Page de connexion (login)
