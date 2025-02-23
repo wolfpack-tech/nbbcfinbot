@@ -1,30 +1,14 @@
-# Utilise une image Alpine légère avec Node.js
-FROM node:20.17.0-alpine
-
-# Définit le répertoire de travail
-WORKDIR /nbbcbot
-
-# Copie uniquement les fichiers nécessaires pour l'installation des dépendances
-COPY package*.json ./
-
-# Installe les dépendances en optimisant le cache
-RUN npm install --omit=dev
-
-# Installation manuelle des dépendances Chromium pour Puppeteer
-RUN apk add --no-cache \
-    chromium \
-    nss \
-    freetype \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont \
-    && npm install puppeteer-core
-
-# Copie du reste des fichiers du projet
+FROM node:18
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+RUN apt-get update && apt-get install -y \
+    libxss1 \
+    libxtst6 \
+    libx11-xcb1 \
+    libgbm-dev \
+    libasound2 \
+    && rm -rf /var/lib/apt/lists/*
 COPY . .
-
-# Expose le port de l'application
 EXPOSE 5000
-
-# Commande pour lancer l'application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
