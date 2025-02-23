@@ -17,6 +17,7 @@
       "express-session": "^1.18.1",
       "mongoose": "^8.10.1",
       "openai": "^4.85.1",
+      "puppeteer": "^20.0.0",
       "qrcode": "^1.5.4",
       "qrcode-terminal": "^0.12.0",
       "whatsapp-web.js": "^1.26.0"
